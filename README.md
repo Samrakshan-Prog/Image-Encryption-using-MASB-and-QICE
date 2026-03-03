@@ -1,122 +1,154 @@
 # 🔐 Image Encryption using MASB and QICE
 
-A secure image encryption and decryption system based on:
+> A secure image encryption and decryption system powered by **Multi-Agent Swarm Behavior (MASB)** and **Quantum-Inspired Chaotic Encoding (QICE)** — delivering high randomness, low pixel correlation, and lossless image recovery.
 
--   **Multi-Agent Swarm Behavior (MASB)**
--   **Quantum-Inspired Chaotic Encoding (QICE)**
+---
 
-This project ensures strong encryption, low pixel correlation, and exact
-image recovery after decryption.
+## 📌 Overview
 
-------------------------------------------------------------------------
+This system applies swarm-based pixel permutation combined with quantum-inspired chaotic encoding to transform images into secure encrypted forms. It features a Flask-based web interface, cloud integration via Cloudinary, and a benchmarking module for security analysis.
 
-## 📌 Project Overview
+---
 
-This system applies swarm-based pixel permutation combined with
-quantum-inspired chaotic encoding to transform images into secure
-encrypted forms.
+## ✨ Features
 
-It includes:
+| Feature | Description |
+|---|---|
+| 🔐 Advanced Encryption | MASB swarm permutation + QICE chaotic encoding |
+| 🔄 Lossless Decryption | Exact pixel-perfect image recovery |
+| 📊 Benchmark Analysis | Correlation metrics and performance plots |
+| 🌐 Flask Web Interface | Upload, encrypt, decrypt via browser |
+| ☁️ Cloudinary Integration | Cloud-based image handling and storage |
+| 📁 File Support | Upload and download encrypted/decrypted images |
 
--   Web-based encryption & decryption using Flask
--   Secure key generation
--   Correlation benchmarking
--   Performance visualization
--   Cloud image handling support
-
-------------------------------------------------------------------------
-
-## 🚀 Features
-
--   🔐 Advanced Image Encryption (MASB + QICE)
--   🔄 Exact Decryption (Lossless Recovery)
--   📊 Correlation & Benchmark Analysis
--   🌐 Flask Web Interface
--   ☁️ Cloudinary Integration
--   📁 Upload & Download Support
-
-------------------------------------------------------------------------
+---
 
 ## 🛠️ Tech Stack
 
--   Python
--   Flask
--   Pillow
--   NumPy
--   Matplotlib
--   Cloudinary
--   HTML / CSS
+- **Backend:** Python, Flask
+- **Image Processing:** Pillow, NumPy
+- **Visualization:** Matplotlib
+- **Cloud Storage:** Cloudinary
+- **Frontend:** HTML, CSS
 
-------------------------------------------------------------------------
+---
 
 ## 📂 Project Structure
 
-Image-Encryption-using-MASB-and-QICE/ │ ├── app.py ├── encryptor.py ├──
-decryptor.py ├── benchmark.py ├── check.py ├── requirements.txt │ ├──
-static/ │ ├── uploads/ │ ├── plots/ │ ├── templates/ │ ├── index.html │
-├── result.html │ ├── about.html │ ├── use.html │ └── README.md
+```
+Image-Encryption-using-MASB-and-QICE/
+│
+├── app.py               # Flask application entry point
+├── encryptor.py         # MASB + QICE encryption logic
+├── decryptor.py         # Decryption and key verification
+├── benchmark.py         # Correlation and performance analysis
+├── check.py             # Utility/validation checks
+├── requirements.txt     # Python dependencies
+│
+├── static/
+│   ├── uploads/         # Uploaded images
+│   └── plots/           # Generated benchmark plots
+│
+└── templates/
+    ├── index.html        # Home / upload page
+    ├── result.html       # Encryption result view
+    ├── about.html        # About the project
+    └── use.html          # Usage instructions
+```
 
-------------------------------------------------------------------------
+---
 
 ## ⚙️ Installation
 
-### 1️⃣ Clone Repository
+### 1. Clone the Repository
 
-git clone
-https://github.com/Samrakshan-Prog/Image-Encryption-using-MASB-and-QICE.git\
+```bash
+git clone https://github.com/Samrakshan-Prog/Image-Encryption-using-MASB-and-QICE.git
 cd Image-Encryption-using-MASB-and-QICE
+```
 
-### 2️⃣ Create Virtual Environment (Recommended)
+### 2. Create a Virtual Environment (Recommended)
 
-python -m venv venv\
-venv`\Scripts`{=tex}`\activate`{=tex}
+```bash
+python -m venv venv
 
-### 3️⃣ Install Dependencies
+# Windows
+venv\Scripts\activate
 
+# macOS / Linux
+source venv/bin/activate
+```
+
+### 3. Install Dependencies
+
+```bash
 pip install -r requirements.txt
+```
 
-------------------------------------------------------------------------
+---
 
-## ▶️ Run Application
+## ▶️ Run the Application
 
+```bash
 python app.py
+```
 
-Open browser:
+Then open your browser and navigate to:
 
+```
 http://127.0.0.1:5000/
+```
 
-------------------------------------------------------------------------
+---
 
 ## 📊 Benchmark Module
 
-To run benchmarking:
+To run correlation and performance analysis:
 
+```bash
 python benchmark.py
+```
 
-This generates correlation and performance plots.
+This generates plots saved to `static/plots/` showing pixel correlation and encryption performance metrics.
 
-------------------------------------------------------------------------
+---
 
 ## 🔑 Encryption Workflow
 
-1.  Upload image\
-2.  MASB applies swarm-based pixel permutation\
-3.  QICE applies chaotic encoding\
-4.  Encrypted image and key generated\
-5.  Decryption reconstructs exact original image
+```
+1. Upload image via the web interface
+       ↓
+2. MASB applies swarm-based pixel permutation
+       ↓
+3. QICE applies quantum-inspired chaotic encoding
+       ↓
+4. Encrypted image and secret key are generated
+       ↓
+5. Decryption using the key reconstructs the exact original image
+```
 
-------------------------------------------------------------------------
+---
 
 ## 📈 Security Highlights
 
--   High randomness
--   Reduced pixel correlation
--   Secure key-based reversible transformation
--   Lossless decryption
+- **High randomness** — chaotic encoding ensures unpredictable output
+- **Low pixel correlation** — adjacent pixels are statistically independent after encryption
+- **Key-based reversibility** — only the correct key can decrypt the image
+- **Lossless decryption** — zero data loss; original image is recovered exactly
 
-------------------------------------------------------------------------
+---
 
-## 👨‍💻 Author
+## 👨‍💻� Author
 
-Sri Samrakshan Parthiban\
+**Sri Samrakshan Parthiban**  
 B.Sc Information Technology
+
+[![LinkedIn](www.linkedin.com/in/srisamrakshan)
+
+> 💡 *Replace the LinkedIn URL above with your actual profile link.*
+
+---
+
+## 📄 License
+
+This project is open source. Feel free to use, modify, and distribute with attribution.
