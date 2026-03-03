@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>About – Image Encryptor</title>
+<style>
+  body {
+    margin: 0;
+    font-family: Segoe UI, sans-serif;
+    color: white;
+    background: black;
+    overflow-x: hidden;
+  }
+
+  .bg-video {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    z-index: -1;
+    object-fit: cover;
+    filter: brightness(0.45);
+  }
+
+  .content-box {
+    width: 85%;
+    max-width: 950px;
+    margin: 60px auto;
+    padding: 30px 40px;
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(12px);
+    border-radius: 14px;
+    border: 1px solid rgba(0,255,213,0.18);
+    box-shadow: 0 0 25px rgba(0,255,213,0.25);
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 2.6rem;
+    color: #00ffd5;
+    text-shadow: 0 0 14px #00ffd5;
+    margin-bottom: 20px;
+  }
+
+  h2 {
+    margin-top: 22px;
+    margin-bottom: 8px;
+    color: #00ffd5;
+    text-shadow: 0 0 10px #00ffd5;
+  }
+
+  p, li {
+    line-height: 1.7rem;
+    font-size: 1.05rem;
+  }
+
+  ul {
+    margin: 12px 0;
+  }
+
+  code {
+    background: rgba(0,0,0,0.6);
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+
+  .back-btn {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 12px 20px;
+    background: #00ffd5;
+    color: black;
+    border-radius: 6px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: .3s;
+  }
+
+  .back-btn:hover {
+    background: #00e0be;
+    box-shadow: 0 0 16px #00ffd5;
+  }
+
+  .credit {
+    margin-top: 25px;
+    font-size: 1.1rem;
+    color: #c4fff7;
+    text-align: center;
+  }
+</style>
+</head>
+
+<body>
+
+<video autoplay muted loop playsinline class="bg-video">
+  <source src="/static/vidd.mp4" type="video/mp4">
+</video>
+
+<div class="content-box">
+
+  <h1>About This Project</h1>
+
+  <p>
+    This system provides secure image encryption and decryption using 
+    <strong>Multi-Agent Swarm Behavior (MASB)</strong> and 
+    <strong>Quantum-Inspired Chaotic Encoding (QICE)</strong>.
+  </p>
+
+  <h2>Objectives</h2>
+  <ul>
+    <li>Ensure confidentiality while transmitting digital images</li>
+    <li>Provide a lossless and reversible decryption process</li>
+    <li>Enhance cryptographic strength using swarm intelligence & chaos theory</li>
+    <li>Deliver a fast and user-friendly encryption experience</li>
+  </ul>
+
+  <h2>Technology Stack</h2>
+  <ul>
+    <li><strong>Frontend:</strong> HTML, CSS, JavaScript</li>
+    <li><strong>Backend:</strong> Flask (Python)</li>
+    <li><strong>Algorithms:</strong> MASB + QICE</li>
+    <li><strong>Supported Formats:</strong> JPG, JPEG, PNG</li>
+  </ul>
+
+  <h2>Key Features</h2>
+  <ul>
+    <li>Advanced pixel scrambling using MASB</li>
+    <li>Quantum-chaotic key generation using QICE</li>
+    <li>Perfect recovery of original image after decryption</li>
+    <li>Beautiful modern UI with animated transitions</li>
+  </ul>
+
+  <h2>Folder Structure</h2>
+  <pre style="font-size:0.95rem;">
+project/
+│── app.py
+│── encryptor.py
+│── decryptor.py
+│── verify.py
+│── templates/
+│── static/
+│── input/
+│── output/
+│── decrypted/
+  </pre>
+
+  <h2>Author</h2>
+  <p class="credit">
+    Srisamrakshan Parthiban<br>
+    <a style="color:#00ffd5;" href="https://www.linkedin.com/in/srisamrakshan" target="_blank">
+      LinkedIn Profile
+    </a>
+  </p>
+
+  <hr style="border-color:#00ffd533;margin:30px 0;">
+
+<h2>Performance Benchmark</h2>
+<p>Upload a real image to test the encryption speed and security strength.</p>
+
+<div style="margin-top:15px;">
+  <input type="file" id="benchImg" accept="image/*"
+         style="padding:10px;width:100%;border-radius:6px;border:1px solid #00ffd566;
+                background:rgba(255,255,255,0.12);color:white;">
+</div>
+
+<button onclick="runBenchmark()" 
+        style="margin-top:15px;padding:12px 20px;
+               background:#00ffd5;color:black;font-weight:bold;border:none;
+               cursor:pointer;border-radius:6px;">
+  🚀 Run Benchmark
+</button>
+
+<p id="benchStatus" style="margin-top:10px;font-style:italic;"></p>
+
+<table id="benchTable" class="hidden" 
+       style="width:100%;margin-top:20px;border-collapse:collapse;
+              backdrop-filter:blur(10px);
+              border:1px solid rgba(0,255,213,0.4);
+              box-shadow:0 0 20px rgba(0,255,213,0.3);">
+  <thead>
+    <tr style="background:rgba(0,255,213,0.3);">
+      <th style="padding:10px;">Method</th>
+      <th style="padding:10px;">Encrypt Time (ms)</th>
+      <th style="padding:10px;">Decrypt Time (ms)</th>
+      <th style="padding:10px;">PSNR (dB)</th>
+      <th style="padding:10px;">Security Score</th>
+    </tr>
+  </thead>
+  <tbody id="benchBody"></tbody>
+</table>
+
+
+  <a href="{{ url_for('index') }}" class="back-btn">⬅ Back to Home</a>
+
+</div>
+
+<script>
+    
+function runBenchmark() {
+  const img = document.getElementById("benchImg").files[0];
+  if (!img) {
+    alert("Please upload an image first!");
+    return;
+  }
+
+  document.getElementById("benchStatus").innerText = "Processing benchmark...";
+  const fd = new FormData();
+  fd.append("image", img);
+
+  fetch("/benchmark", {
+    method: "POST",
+    body: fd
+  })
+  .then(res => res.json())
+  .then(data => {
+    document.getElementById("benchStatus").innerText = "Benchmark complete!";
+    const tbody = document.getElementById("benchBody");
+    tbody.innerHTML = "";
+    
+    for (const method in data) {
+      const row = `
+  <tr style='text-align:center;border-bottom:1px solid rgba(255,255,255,0.15);'>
+    <td>${method}</td>
+    <td>${data[method].encrypt.toFixed(2)}</td>
+    <td>${data[method].decrypt.toFixed(2)}</td>
+    <td>${data[method].psnr !== null ? data[method].psnr.toFixed(2) : "-"}</td>
+    <td>${data[method].security !== null ? data[method].security.toFixed(2) + "%" : "-"}</td>
+  </tr>`;
+      tbody.innerHTML += row;
+    }
+
+    document.getElementById("benchTable").classList.remove("hidden");
+  });
+}
+</script>
+
+
+</body>
+</html>

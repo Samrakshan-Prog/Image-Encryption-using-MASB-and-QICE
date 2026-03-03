@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Comparison Result</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<style>
+/* Same UI style as comp.html */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  font-style: italic;
+}
+:root {
+  --bg-dark: #121212;
+  --primary: #00ffd5;
+}
+body {
+  background: #000;
+  color: var(--primary);
+  text-shadow: 0 0 10px var(--primary);
+}
+
+/* Title */
+.result-header {
+  text-align: center;
+  margin-top: 35px;
+  margin-bottom: 30px;
+}
+.result-header h1 {
+  font-size: 2.3rem;
+  text-shadow: 0 0 20px var(--primary);
+}
+
+/* Image section */
+.image-box {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 35px;
+}
+.image-box img {
+  width: 300px;
+  border-radius: 10px;
+  border: 2px solid var(--primary);
+  box-shadow: 0 0 20px rgba(0,255,213,0.4);
+}
+
+/* Metrics Table */
+.metrics-box {
+  width: 80%;
+  max-width: 650px;
+  margin: auto;
+  background: rgba(0,0,0,0.5);
+  border-radius: 14px;
+  padding: 20px;
+  border: 2px solid var(--primary);
+  box-shadow: 0 0 30px rgba(0,255,213,0.25);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+}
+th, td {
+  padding: 10px;
+  border-bottom: 1px solid rgba(0,255,213,0.3);
+}
+th {
+  font-size: 18px;
+}
+td:first-child {
+  font-weight: bold;
+  text-align: left;
+}
+
+/* Back Button */
+.back-btn {
+  display: block;
+  text-decoration: none;
+  margin: 35px auto;
+  width: 200px;
+  text-align: center;
+  padding: 12px 18px;
+  background: var(--primary);
+  color: black;
+  font-weight: bold;
+  font-size: 18px;
+  border-radius: 12px;
+  box-shadow: 0 0 18px var(--primary);
+  transition: 0.3s ease-in-out;
+}
+.back-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 28px var(--primary);
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="result-header">
+  <h1>Image Comparison Results ⚡</h1>
+</div>
+
+<div class="image-box">
+  <img src="/static/uploads/{{ img1 }}" alt="Image 1">
+  <img src="/static/uploads/{{ img2 }}" alt="Image 2">
+</div>
+
+{% if plot_img %}
+<div style="text-align:center; margin-top:20px;">
+    <h3>Correlation Analysis Graph</h3>
+    <img src="{{ url_for('static', filename='plots/' + plot_img) }}" 
+         alt="Correlation Graph" style="max-width: 80%; border: 2px solid var(--primary);">
+    <p><strong>Correlation Analysis</strong></p>
+</div>
+{% endif %}
+
+<div class="metrics-box">
+<table>
+  <tr>
+    <th>Metric</th>
+    <th>Value</th>
+  </tr>
+  {% for key, value in results.items() %}
+  <tr>
+    <td>{{ key }}</td>
+    <td>{{ value }}</td>
+  </tr>
+  {% endfor %}
+</table>
+</div>
+
+
+<a class="back-btn" href="{{ url_for('comp') }}">🔄 Compare Again</a>
+  <center><a href="{{ url_for('index') }}" class="back-btn">⬅ Back to Home</a></center>
+
+</body>
+</html>

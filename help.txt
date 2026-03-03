@@ -1,0 +1,5 @@
+python3 decryptor.py output/encrypted_b.png output/key_b.json
+
+python3 encryptor.py /home/sam/Downloads/b.png
+
+source venv/bin/activate

@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png"
+      href="https://cdn-icons-png.flaticon.com/512/3064/3064197.png">
+
   <title>Image Encryption - MASB + QICE</title>
   <style>
     :root {
@@ -36,72 +39,199 @@
       color: var(--text-light);
     }
 
-    header {
+   .titlee {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  padding: 16px 24px;
-  background-color: hsla(225, 91%, 17%, 0.3); 
-  color: white; 
-  font-family: 'Times New Roman', Times, serif;
-  backdrop-filter: blur(10px);  
+  padding: 14px 28px;
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  border-bottom: 2px solid rgba(0, 255, 213, 0.4);
+  border-radius: 0 0 16px 16px;
+
+  box-shadow: 0 8px 25px rgba(0, 255, 191, 0.25),
+              inset 0 0 18px rgba(0, 255, 213, 0.35);
+
+  animation: glowPulse 3s ease-in-out forwards;
+
+  position: relative;
+  z-index: 20;
 }
 
-.glass-box {
-  background: rgba(255, 255, 255, 0.15); 
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 12px;
-  padding: 30px;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
-  width: 100%;
-  max-width: 500px;
-  margin: auto;
+/* NEON Underline Glow */
+.titlee::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 80%;
+  height: 3px;
+  border-radius: 50%;
+  background: #00ffd5;
+  box-shadow: 0 0 18px #00ffd5;
+  animation: barGlow 2s alternate infinite;
 }
 
-    header h1 {
-      font-size: 1.5rem;
+.titlee h1 {
+  font-size: 2.4rem;
+  letter-spacing: 3px;
+  font-family: 'Times New Roman', serif;
+  font-style: italic;
+  color: #ffffffd3;
+  text-shadow: 0 0 10px #00ffd5, 0 0 20px rgba(0,255,213,0.4);
+}
+
+/* Glow Animation */
+@keyframes glowPulse {
+  0% { box-shadow: 0 8px 25px rgba(0,255,191,0.2); }
+  50% { box-shadow: 0 12px 35px rgba(0,255,191,0.4); }
+  100% { box-shadow: 0 8px 25px rgba(0,255,191,0.2); }
+}
+
+@keyframes barGlow {
+  0% { transform: scaleX(0.8); opacity: 0.7; }
+  100% { transform: scaleX(1.1); opacity: 1; }
+}
+
+ header h1 {
+      font-size: 2rem;
       font-family: 'Times New Roman', Times, serif;
+      color: hsla(0, 0%, 100%, 0.753); 
     }
 
+
+.glass-box {
+  background: rgba(0, 0, 0, 0.45);
+  border: 1.8px solid rgba(0, 255, 213, 0.35);
+  padding: 50px 60px;
+  border-radius: 22px;
+  max-width: 420px;
+  width: 100%;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  max-width: 1000px;
+
+  box-shadow:
+    0 0 35px rgba(0, 255, 213, 0.55),
+    inset 0 0 18px rgba(0, 255, 213, 0.3);
+
+  text-align: center;
+  animation: hologramFade 1s ease forwards;
+  opacity: 0;
+  transform: scale(0.85);
+}
+
+@keyframes hologramFade {
+  0% {
+    opacity: 0;
+    transform: scale(0.7);
+    filter: brightness(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    filter: brightness(1);
+  }
+}
+
+.glass-box .btn {
+  width: 80%;
+  max-width: 320px;
+  display: block;
+  margin: 12px auto;
+}
+
+
+/* Heading inside the box */
+.glass-box h2 {
+  margin-bottom: 28px;
+  font-size: 1.4rem;
+  color: #00ffd5;
+  text-shadow: 0 0 12px #00ffd5;
+}
+
+/* Better spacing for buttons */
+#main  {
+  width: 1000px;
+  margin: 12px auto;
+}
+   
    
 
     main {
       padding: 24px;
-      max-width: 700px;
+      max-width: 1000px;
       margin: auto;
     }
 
     h2 {
-      margin-bottom: 16px;
-      color: black;
+      margin-bottom: 30px;
+      color: white;
     }
 
     .btn {
-      padding: 10px 20px;
-      margin: 10px 5px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 16px;
-    }
+  position: relative;
+  padding: 14px 26px;
+  margin: 10px 5px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  transform: translateY(0);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  color: black;
+  text-shadow: 0 0 8px rgba(0,255,200,0.7);
+  box-shadow: 0 6px 0 rgba(0,0,0,0.4);
+  animation: glowBorder 2s linear infinite;
+  background: linear-gradient(145deg, #e8ffff, #88f7ff);
+}
+
+.btn:active {
+  transform: translateY(6px);
+  box-shadow: 0 0 0 rgba(0,0,0,0.4);
+}
+
 
     .btn-encrypt {
-      background-color: var(--success);
-      color: white;
+      background-color:skyblue;
+      color: black;
+      padding: 20px;
     }
 
     .btn-decrypt {
-      background-color: var(--danger);
-      color: white;
-    }
+  background: linear-gradient(145deg, navajowhite, #fef0ba);
+  padding: 20px;
+}
+
+@keyframes glowBorder {
+  0% { box-shadow: 0 0 6px #00ffd5, 0 0 10px #00ffd5 inset; }
+  50% { box-shadow: 0 0 14px #00ffd5, 0 0 20px #00ffd5 inset; }
+  100% { box-shadow: 0 0 6px #00ffd5, 0 0 10px #00ffd5 inset; }
+}
 
     .btn-back {
       background-color: #888;
-      color: white;
+      color: black;
     }
 
+    .btn-encrypt::before,
+.btn-decrypt::before {
+  content: attr(data-emoji);
+  margin-right: 8px;
+  display: inline-block;
+  animation: bellShake 0.8s infinite ease-in-out;
+}
+
+@keyframes bellShake {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(18deg); }
+  50% { transform: rotate(0deg); }
+  75% { transform: rotate(-18deg); }
+  100% { transform: rotate(0deg); }
+}
     input[type="file"] {
       display: block;
       margin: 10px 0;
@@ -110,7 +240,9 @@
     .psnr-good { color: green; }
     .psnr-warning { color: orange; }
     .psnr-bad { color: red; }
-    .hidden { display: none; }
+   .hidden {
+  display: none !important;
+}
     #heroSplash {
       position: fixed;
       top: 0;
@@ -132,42 +264,103 @@
       filter: brightness(0.7);
     }
 
-    .hero-content {
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      color: white;
-    }
+   
+.hero-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  animation: fadeIn 1.6s ease-in-out forwards;
+  opacity: 0;
+}
 
-    .hero-title {
-      font-size: 2.8rem;
-      text-shadow: 0 0 20px black;
-    }
+.hero-title {
+  font-size: 3.6rem;
+  font-weight: 900;
+  font-style: italic;
+  color: #00ffd5;
+  letter-spacing: 4px;
+  text-shadow: 0 0 15px #00ffd5, 0 0 40px #007f66;
+  margin-bottom: 15px;
+  animation: glowPulse2 3s infinite alternate;
+  position: relative;
+}
 
-    .hero-button {
-  padding: 8px 20px;
-  background-color: white;
-  color: #000;
-  border: 1px solid #00ffd5;
-  border-radius: 6px;
-  font-size: 16px;
+/* Cool neon underbar */
+.hero-title::after {
+  content: "";
+  width: 55%;
+  height: 4px;
+  background: #00ffd5;
+  display: block;
+  margin: 10px auto 0;
+  border-radius: 10px;
+  box-shadow: 0 0 18px #00ffd5;
+}
+
+
+/* Cyber Neon Button */
+.hero-button {
+  padding: 12px 36px;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  backdrop-filter: blur(6px);
+
+  background: linear-gradient(135deg, #00ffd5, #009688);
+  color: black;
+  text-shadow: 0 0 10px rgba(255,255,255,0.6);
+
+  box-shadow: 0 0 18px #00ffd5, 0 8px 18px rgba(0,255,213,0.25);
+  transition: 0.3s ease;
+  margin-top: 20px;
+  will-change: transform, opacity, filter;
+  transform: translateZ(0);
 }
 
 .hero-button:hover {
-  background-color: rgba(0, 191, 166, 0.7); 
+  transform: translateY(-4px);
+  box-shadow: 0 0 25px #00ffd5, 0 8px 30px rgba(0,255,213,0.45);
+}
+
+
+/* Paragraph styling */
+.hero-content p {
+  width: 70%;
+  margin-top: 28px;
+  line-height: 1.45rem;
+  font-size: 0.9rem;
+  font-style: italic;
+  color: #e6fffa;
+  text-shadow: 0 0 12px rgba(0,255,213,0.35);
+  animation: slideUp 1.8s ease forwards;
+  opacity: 0;
+}
+
+
+/* Animations */
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(40px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes glowPulse2 {
+  0% { text-shadow: 0 0 10px #00ffd5, 0 0 25px #007f66; }
+  100% { text-shadow: 0 0 25px #00ffd5, 0 0 60px #00ffd5; }
 }
 
 
 #appContent {
   position: relative;
   min-height: 100vh;
-  background: url('static/image8.png') center center / cover no-repeat fixed;
 }
 
 
@@ -177,17 +370,22 @@ main {
   z-index: 1;
 }
 .section {
-  background-image: url('static/image8.png'); 
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
   position: relative;
-  width: 100vw;
-  height: 100vh; 
+  width: 100%;
+  min-height: 100vh; 
+  max-width: 1000px;
   display: flex;
   justify-content: center;
+  gap:79px;
   align-items: center;
+  flex-direction: column;
+  min-width: 100%;
+  padding: 150px 20px 60px;
+
 }
 
 .drop-zone {
@@ -233,63 +431,315 @@ input[type="file"]::file-selector-button:hover {
   background-color: #1a5fd2;
 }
 
-#hamburger {
-  font-size: 24px;
-  cursor: pointer;
-  padding: 8px 12px;
-  background: var(--primary);
-  color: white;
-  border-radius: 4px;
-  z-index: 10001;
+
+#loadingBox {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #00ffd5;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  display: none;
+  z-index: 99999;
+  display: none;
 }
 
-/* Overlay */
-#menuOverlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  backdrop-filter: blur(6px);
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 10000;
+.loader {
+  border: 3px solid #eee;
+  border-top: 3px solid #00ffd5;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  animation: spin 1s linear infinite;
+  display: inline-block;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+/* HERO EXIT ANIMATION */
+.hero-exit {
+  animation: crushThrow 1.2s ease forwards;
+  transform-origin: center;
+  pointer-events: none; /* Prevent clicks during animation */
+}
+
+@keyframes crushThrow {
+  0% {
+    transform: scale(1) rotate(0deg);
+    border-radius: 0;
+    opacity: 1;
+  }
+  30% {
+    transform: scale(0.85) rotate(-4deg);
+    filter: brightness(0.8) contrast(1.2);
+  }
+  60% {
+    transform: scale(0.4) rotate(25deg);
+    border-radius: 25%;
+    filter: blur(4px);
+  }
+  80% {
+    transform: scale(0.2) rotate(-45deg);
+    border-radius: 60%;
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(0) rotate(90deg) translate(200px, -300px);
+    opacity: 0;
+    display: none;
+  }
+}
+
+/* MAIN ENTRANCE ZOOM */
+.main-enter {
+  animation: zoomInShow 0.9s ease forwards;
   opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
+  transform: scale(0.6);
 }
 
-/* Side menu */
-#sideMenu {
-  position: fixed;
-  top: 0;
-  right: -250px; /* Hidden initially */
-  width: 220px;
-  height: 100%;
-  background-color: rgba(18, 18, 18, 0.95);
-  color: white;
-  padding: 20px;
-  box-shadow: -3px 0 10px rgba(0,0,0,0.5);
+@keyframes zoomInShow {
+  0% {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.menu-bar {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  gap: 20px;
+}
+
+.menu-bar a {
+  font-size: 16px;
+  padding: 8px 14px;
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  font-style: italic;
+  background: rgba(38, 140, 163, 0.394);
+  border: 1px solid rgba(255,255,255,0.4);
+  border-radius: 6px;
+  transition: 0.3s;
+  backdrop-filter: blur(6px);
+}
+
+.menu-bar a:hover {
+  background: rgba(0, 255, 213, 0.4);
+  color: black;
+}
+
+.menu-bar a.active {
+  background: #00ffd5;
+  color: black;
+  font-weight: bold;
+  border-color: #009dff8a;
+}
+.file-input {
+  color: white !important;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(0,255,213,0.5);
+  padding: 10px;
+  border-radius: 6px;
+  width: 100%;
+}
+
+/* Style the Choose File button */
+.file-input::file-selector-button {
+  background: #00ffd5;
+  color: black;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.file-input::file-selector-button:hover {
+  background: #00c4aa;
+}
+
+#encPreview, #decPreview {
+  margin-top: 14px;
+  text-align: center;
+  color: #00ffd5;
+}
+
+#encPreview h3, #decPreview h3 {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+  text-shadow: 0 0 10px #00ffd5;
+}
+
+#shareModal {
+  display: none;
+}
+
+#shareModal.show {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+}
+
+
+/* Smooth Zoom Animation */
+.share-box {
+  animation: zoomFade 0.4s ease forwards;
+  opacity: 0;
+  transform: scale(0.6);
+}
+
+@keyframes zoomFade {
+  0% {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.share-input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  font-size: 0.95rem;
+  font-weight: bold;
+  text-align: center;
+  outline: none;
+  margin-bottom: 10px;
+}
+
+.copy-btn {
+  padding: 8px 20px;
+  border: none;
+  background: black;
+  color: #00ffd5;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  transition: 0.3s;
+}
+
+.copy-btn:hover {
+  opacity: 0.85;
+}
+
+#main,
+#encryptForm,
+#decryptForm {
+    max-width: 900px !important; /* Increased */
+    width: 100% !important;
+}
+/* Make inner elements match full width */
+.glass-box .btn,
+.file-input,
+.drop-zone {
+    width: 100% !important;
+    max-width: none;
+}
+
+/* Better image preview scaling */
+#encImgPreview,
+#decImgPreview {
+    width: 95%;
+    max-height: 400px;
+    object-fit: contain;
+}
+
+/* Increase padding for better spacing */
+.glass-box {
+    padding: 55px 80px;
+}
+
+#confirmModal,
+#formatModal,
+#shareModal {
+  display: none;
+}
+
+#confirmModal.show,
+#formatModal.show,
+#shareModal.show {
+  display: flex !important;
+}
+
+a.btn {
+  text-decoration: none !important;
+  color: black !important;
+}
+a.btn:visited {
+  color: black !important;
+}
+
+a.btn:hover {
+  text-decoration: none !important;
+}
+
+
+#decPreview,
+#decInfo {
+  display: none;
+}
+
+#decPreview.show {
+  display: flex !important; /* Keep flex layout */
+}
+
+#decInfo.show {
+  display: block !important;
+}
+
+#confirmModal {
+  bottom: 40px !important;
+  right: 40px !important;
+}
+
+#confirmModal {
+  bottom: 40px !important;
+  right: 40px !important;
+}
+
+.preview-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 35px;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.preview-left {
+  width: 55%;
+  text-align: center;
+}
+
+.preview-right {
+  width: 40%;
   display: flex;
   flex-direction: column;
   gap: 12px;
-  transition: right 0.3s ease;
-  z-index: 10001;
 }
 
-#sideMenu.show {
-  right: 0;
-}
-
-#menuOverlay.show {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-#sideMenu button {
+#encImgPreview {
   width: 100%;
+  max-height: 400px;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 0 18px rgba(0,255,213,0.4);
 }
-
-
 
 
   </style>
@@ -297,58 +747,93 @@ input[type="file"]::file-selector-button:hover {
 <body class="dark">
   <div id="heroSplash">
     <video autoplay muted loop>
-      <source src="https://motionbgs.com/media/5044/abstract-blue-smoke.960x540.mp4" type="video/mp4" />
+      <source src="/static/vidd.mp4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
     <div class="hero-content">
-      <h1 class="hero-title">Image Encryption using<br><b> MASB + QICE</b></h1>
+      <h1 class="hero-title"> <i>IMAGE ENCRYPTOR</i> </b></h1>
+
       <br />
-      <button class="hero-button" onclick="enterApp()">Click to Continue</button>
+      <button class="hero-button" onclick="enterApp()">Continue</button>
+      <p><i>This project introduces a secure image encryption system using Multi-Agent Swarm Behavior (MASB) for pixel shuffling and Quantum-Inspired Chaotic Encoding (QICE) for highly random key generation. It ensures perfect image recovery during decryption while protecting data from unauthorized access. The system features a clean and interactive UI with drag-and-drop support and smooth animations for a seamless user experience.</i></p>
     </div>
+  
   </div>
+
+
+
+
+
+  <div id="loadingBox">
+  <span class="loader"></span>
+  <span id="loadingText">Processing...</span>
+</div>
+
   <div id="appContent">
-  <header>
-  <h1>IMAGE ENCRYPTOR USING MULTI-AGENT SWARM BEHAVIOR AND QUANTUM-INSPIRED CHAOTIC ENCODING</h1>
 
-</header>
+    <video id="bgVid" autoplay muted loop playsinline style="
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  
+  object-fit: cover;
+  z-index: -1;
+  filter: brightness(0.6);
+">
+  <source src="/static/vidd.mp4" type="video/mp4">
+</video>
 
+
+  
 
 
     <main class="section">
-     
-      <center>
-           
-       <!-- Hamburger Icon -->
-  <div id="hamburger" onclick="toggleMenu()">☰ Files</div>
+      <nav class="menu-bar">
+  <a href="{{ url_for('index') }}" class="active">Home</a>
+<a href="{{ url_for('about') }}">About</a>
+<a href="{{ url_for('use') }}">How to Use</a>
+<a href="{{ url_for('comp') }}">Compare Images</a>
 
-  <!-- Background Overlay -->
-  <div id="menuOverlay" onclick="closeMenu()"></div>
 
-  <!-- Slide-out Menu -->
-  <!-- Slide-out Menu with blur glass style -->
-<div id="sideMenu" class="glass-box">
-  <button class="btn btn-encrypt" onclick="fetch('/open-output').then(res => res.text()).then(alert)">
-    📂 Open Output Folder
-  </button>
-  <button class="btn btn-decrypt" onclick="fetch('/open-decrypted').then(res => res.text()).then(alert)">
-    📂 Open Decrypted Folder
-  </button>
+</nav>
+
+     <div class="titlee">
+  <h1><i>IMAGE ENCRYPTOR</i></h1>
+    <br>
+    <br>
+
 </div>
-    
-      <div id="main" class="glass-box">
+
+      <center>
+        <div id="main" class="glass-box">
         <h2>Select to Encrypt or Decrypt</h2>
-        <button class="btn btn-encrypt" onclick="showSection('encryptForm')">🔐 Encrypt</button>
-        <button class="btn btn-decrypt" onclick="showSection('decryptForm')">🔓 Decrypt</button>
-      </div>
-   
+        <button class="btn btn-encrypt" data-emoji="🔐" onclick="showSection('encryptForm')">Encrypt</button>
+        <button class="btn btn-decrypt" data-emoji="🔓" onclick="showSection('decryptForm')">Decrypt</button>
+        </div>
       <div id="encryptForm" class="glass-box hidden">
         <h2>Select Image to Encrypt</h2>
         <div id="encryptDrop" class="drop-zone">
     <p>📤 Drag & Drop Image Here</p>
   </div>
-  <input type="file" id="encImg" accept="image/*">
-  <button class="btn btn-encrypt" onclick="encrypt()">Start Encryption</button>
+  <input type="file" id="encImg" accept="image/*" class="file-input">
+  <button class="btn btn-encrypt" data-emoji="⚙️" onclick="encrypt()">Start Encryption</button>
   <p id="encStatus"></p>
+  <div id="encPreview" class="hidden preview-box">
+  <div class="preview-left">
+    <h3>Encrypted Preview</h3>
+    <img id="encImgPreview" />
+  </div>
+
+  <div class="preview-right">
+    <a id="downloadEncImg" class="btn" onclick="forceEncryptedDownload()">👇 Download Encrypted Image</a>
+    <a id="downloadEncKey" class="btn" download>🔑 Download Key File</a>
+    <button class="btn" onclick="openShareModal()">☍ Share</button>
+  </div>
+</div>
+
+<br>
   <button class="btn btn-back" onclick="showSection('main')">⬅ Back</button>
 </div>
 
@@ -357,47 +842,134 @@ input[type="file"]::file-selector-button:hover {
         <div id="decryptDrop" class="drop-zone">
     <p>📤 Drag & Drop Encrypted Image Here</p>
   </div>
-  <input type="file" id="decImg" accept="image/*">
-  <input type="file" id="decKey">
-  <button class="btn btn-decrypt" onclick="decrypt()">Start Decryption</button>
+  <input type="file" id="decImg" accept="image/*" class="file-input">
+  <input type="file" id="decKey" class="file-input">
+  <button class="btn btn-decrypt" data-emoji="⚡" onclick="decrypt()">Start Decryption</button>
   <p id="decStatus"></p>
   <div id="decInfo" class="hidden">
     <p id="psnrInfo"></p>
     <p id="sizeInfo"></p>
   </div>
-  <button class="btn btn-back" onclick="showSection('main')">⬅ Back</button>
+
+  <div id="decPreview" class="hidden preview-box">
+  <div class="preview-left">
+    <h3>Decrypted Image Preview</h3>
+    <img id="decImgPreview" />
+  </div>
+
+  <div class="preview-right">
+    <a id="downloadDecImg" class="btn" download>👇 Download Decrypted Image</a>
+    <button class="btn" onclick="openShareModal()">☍ Share</button>
+  </div>
 </div>
+<br>
+ <button class="btn btn-back" onclick="showSection('main')">⬅ Back</button>
     </center>
     </main>
+    </div>
+
+    <!-- SHARE POPUP -->
+     <div id="shareModal" style="
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.7); backdrop-filter: blur(6px);
+  z-index: 99999;">
+
+  <div class="share-box" style="background: #111; padding: 25px; border-radius: 14px;
+    width: 340px; text-align: center; box-shadow: 0 0 20px #00ffd5;">
+
+    
+    <h3 style="color: #00ffd5; margin-bottom: 15px;">Share</h3>
+
+    <div style="display: flex; justify-content: space-around; margin-bottom: 20px;">
+      <button onclick="shareTo('whatsapp')" style="background:none;border:none;cursor:pointer;">
+  <img src="https://cdn-icons-png.flaticon.com/512/124/124034.png" 
+       alt="WhatsApp" width="32" height="32">
+</button>
+
+     <button onclick="shareTo('facebook')" style="background:none;border:none;cursor:pointer;">
+  <img src="https://cdn-icons-png.flaticon.com/512/174/174848.png"
+       alt="Facebook" width="32" height="32">
+</button>
+
+<button onclick="shareTo('x')" style="background:none;border:none;cursor:pointer;">
+  <img src="https://cdn-icons-png.flaticon.com/128/733/733579.png"
+       alt="X (Twitter)" width="32" height="32">
+</button>
+
+<button onclick="shareTo('gmail')" style="background:none;border:none;cursor:pointer;">
+  <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png"
+       alt="Gmail" width="32" height="32">
+</button>
+
+    </div>
+
+     <input id="shareLink" class="share-input" readonly>
+          <button class="copy-btn" onclick="copyShareLink()">Copy Link</button>
+
+    <br><br>
+    <button onclick="closeShareModal()" class="copy-btn">Close</button>
+  </div>
+</div>
+
+      <!-- FORMAT CONVERSION POPUP -->
+<div id="formatModal" style="
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.7); backdrop-filter: blur(6px);
+   justify-content: center; align-items: center;
+  z-index: 99999;">
   
+  <div class="share-box" style="background:#111; padding:25px; border-radius:14px;
+    width:340px; text-align:center; box-shadow:0 0 20px #00ffd5;">
+    
+    <h3 style="color:#00ffd5;margin-bottom:12px;">Convert Image</h3>
 
+    <p id="fileName" style="color:white;margin-bottom:10px;"></p>
 
+    <select id="formatSelect" class="share-input" style="text-align:center;">
+      <option value="png">PNG</option>
+      <option value="jpg">JPG</option>
+      <option value="jpeg">JPEG</option>
+    </select>
+
+    <button class="copy-btn" onclick="confirmConversion()">OK</button>
+    <br><br>
+    <button class="copy-btn" onclick="closeFormatModal()">Cancel</button>
+
+  </div>
+</div>
+<!-- CONFIRM CONVERSION POPUP -->
+<div id="confirmModal" style="
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 99999;
+  display: none;">
+
+  <div class="share-box" style="
+    background:#111;
+    padding:18px;
+    border-radius:14px;
+    width:260px;
+    text-align:center;
+    box-shadow:0 0 20px #00ffd5;">
+    
+    <h3 style="color:#00ffd5;margin-bottom:10px; font-size: 0.95rem;">
+      Convert image to original format?
+    </h3>
+
+    <div style="display:flex; gap:8px; width:100%; justify-content:center;">
+      <button class="copy-btn" onclick="confirmYes()" 
+              style="padding:6px 14px; font-size: 0.8rem;">Yes</button>
+
+      <button class="copy-btn" onclick="closeConfirmModal()"
+              style="padding:6px 14px; font-size: 0.8rem;">No</button>
+    </div>
+  </div>
+</div>
+
+    </body>
 
   <script>
-
-  
-  function toggleMenu() {
-    const menu = document.getElementById("sideMenu");
-    const overlay = document.getElementById("menuOverlay");
-
-    const isOpen = menu.classList.contains("show");
-
-    if (isOpen) {
-      closeMenu();
-    } else {
-      menu.classList.add("show");
-      overlay.classList.add("show");
-    }
-  }
-
-  function closeMenu() {
-    document.getElementById("sideMenu").classList.remove("show");
-    document.getElementById("menuOverlay").classList.remove("show");
-  }
-
-
-
-
     function showSection(id) {
       document.getElementById('main').classList.add('hidden');
       document.getElementById('encryptForm').classList.add('hidden');
@@ -406,28 +978,79 @@ input[type="file"]::file-selector-button:hover {
     }
 
     function enterApp() {
-      document.getElementById('heroSplash').style.display = 'none';
-      document.getElementById('appContent').style.display = 'block';
-    }
+  const hero = document.getElementById('heroSplash');
+  const app = document.getElementById('appContent');
+  const mainBox = document.getElementById('main');
 
-    function encrypt() {
-      const img = document.getElementById('encImg').files[0];
-      if (!img) return alert('Please select an image');
-      const formData = new FormData();
-      formData.append('image', img);
+  hero.classList.add('hero-exit');
 
-      fetch('/encrypt', { method: 'POST', body: formData })
-        .then(res => res.json())
-        .then(data => {
-          document.getElementById('encStatus').innerText = data.message;
-        });
-    }
-     
+  setTimeout(() => {
+    hero.style.display = 'none';
+    app.style.display = 'block';
+    mainBox.classList.add('main-enter');
+    bgVid.play();
+  }, 1200); // match animation duration
+}
+
+    function showLoader(text) {
+  document.getElementById("loadingText").innerText = text;
+  document.getElementById("loadingBox").style.display = "block";
+}
+
+function hideLoader() {
+  document.getElementById("loadingBox").style.display = "none";
+}
+function encrypt() {
+  const img = document.getElementById('encImg').files[0];
+  if (!img) return alert('Please select an image');
+
+  showLoader("Encrypting...");
+  const formData = new FormData();
+  formData.append('image', img);
+
+  fetch('/encrypt', { method: 'POST', body: formData })
+    .then(res => res.json())
+    .then(data => {
+      hideLoader();
+      document.getElementById('encStatus').innerText = data.message;
+
+    if (data.encrypted_image && data.key_file) {
+
+    document.getElementById('encPreview').classList.remove('hidden');
+    document.getElementById('downloadEncImg').classList.remove('hidden');
+    document.getElementById('downloadEncKey').classList.remove('hidden');
+
+        document.getElementById('encImgPreview').src = data.encrypted_image;
+        shareImageURL = data.encrypted_image;
+
+        const imgDL = document.getElementById('downloadEncImg');
+        const keyDL = document.getElementById('downloadEncKey');
+
+        // Key download
+        keyDL.href = data.key_file;
+        keyDL.download = "encryption_key.key";
+
+        // 🔐 Force encrypted image to download
+        fetch(data.encrypted_image)
+          .then(res => res.blob())
+          .then(blob => {
+            const url = URL.createObjectURL(blob);
+            imgDL.href = url;
+            imgDL.download = "encrypted_image.png";
+          });
+
+        // Reset input
+        document.getElementById('encImg').value = "";
+      }
+    });
+}
 
     function decrypt() {
       const img = document.getElementById('decImg').files[0];
       const key = document.getElementById('decKey').files[0];
       if (!img || !key) return alert('Both files are required');
+
+       showLoader("Decrypting...");
 
       const formData = new FormData();
       formData.append('image', img);
@@ -436,8 +1059,11 @@ input[type="file"]::file-selector-button:hover {
       fetch('/decrypt', { method: 'POST', body: formData })
         .then(res => res.json())
         .then(data => {
+
+          hideLoader();
+
           document.getElementById('decStatus').innerText = data.message;
-          document.getElementById('decInfo').classList.remove('hidden');
+          document.getElementById('decInfo').classList.add('show');
 
           const originalKB = data.original_size ? (data.original_size / 1024).toFixed(2) : 'Unknown';
           const decryptedKB = data.decrypted_size ? (data.decrypted_size / 1024).toFixed(2) : 'Unknown';
@@ -459,8 +1085,223 @@ input[type="file"]::file-selector-button:hover {
           } else if (psnrText.includes('∞')) {
             document.getElementById('psnrInfo').className = 'psnr-good';
           }
+          if (data.decrypted_image) {
+  document.getElementById('decPreview').classList.add('show');
+  document.getElementById('decImgPreview').src = data.decrypted_image;
+
+const decDL = document.getElementById('downloadDecImg');
+decDL.href = data.decrypted_image;
+decDL.download = "decrypted_image.png";
+
+currentImageURL = data.decrypted_image;
+shareImageURL = currentImageURL;
+
+setTimeout(() => {
+  openConfirmModal();
+}, 500);
+
+document.getElementById('decImg').value = "";
+document.getElementById('decKey').value = "";
+
+}
+
         });
     }
+
+
+function setupDropZone(dropZoneId, fileInputId) {
+  const dropZone = document.getElementById(dropZoneId);
+  const fileInput = document.getElementById(fileInputId);
+
+  dropZone.addEventListener("dragover", (e) => {
+    e.preventDefault();
+    dropZone.classList.add("dragover");
+  });
+
+  dropZone.addEventListener("dragleave", () => {
+    dropZone.classList.remove("dragover");
+  });
+
+  dropZone.addEventListener("drop", (e) => {
+    e.preventDefault();
+    dropZone.classList.remove("dragover");
+
+    if (e.dataTransfer.files.length > 0) {
+      fileInput.files = e.dataTransfer.files;
+    }
+  });
+}
+
+setupDropZone("encryptDrop", "encImg");
+setupDropZone("decryptDrop", "decImg");
+
+let shareImageURL = "";
+
+function openShareModal() {
+  const modal = document.getElementById("shareModal");
+  const box = modal.querySelector('.share-box');
+
+  document.getElementById("shareLink").value = shareImageURL;
+  modal.classList.add("show");
+
+  box.style.animation = "none";
+  void box.offsetWidth;
+  box.style.animation = "zoomFade 0.4s ease forwards";
+}
+
+function closeShareModal() {
+  document.getElementById("shareModal").classList.remove("show");
+}
+
+function copyShareLink() {
+  navigator.clipboard.writeText(shareImageURL);
+  alert("Copied!");
+}
+
+// Social Share
+function shareTo(platform) {
+  let url = encodeURIComponent(shareImageURL);
+  let text = encodeURIComponent("Check this encrypted image!");
+  let shareURL = "";
+
+  if (platform === "whatsapp") shareURL = `https://wa.me/?text=${text}%20${url}`;
+  if (platform === "facebook") shareURL = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+  if (platform === "x") shareURL = `https://x.com/intent/tweet?text=${text}&url=${url}`;
+  if (platform === "gmail") {
+  shareURL = `https://mail.google.com/mail/?view=cm&fs=1&to=&su=Shared%20Image&body=${text}%0A${url}`;
+}
+
+
+  window.open(shareURL, "_blank");
+}
+
+let currentImageURL = "";
+let currentImageName = "decrypted_image";
+
+function confirmConversion() {
+  closeShareModal();
+  closeConfirmModal();
+  closeFormatModal();
+
+  const format = document.getElementById("formatSelect").value;
+  const outputFormat = format === "jpg" ? "jpeg" : format;
+
+  const img = document.getElementById("decImgPreview");
+  const canvas = document.createElement("canvas");
+  const ctx = canvas.getContext("2d");
+
+  showLoader("Converting...");
+
+  // Ensure browser finishes rendering the preview
+  setTimeout(() => {
+    const tempImg = new Image();
+    tempImg.crossOrigin = "anonymous";
+    tempImg.src = img.src;
+
+    tempImg.onload = function() {
+      canvas.width = tempImg.naturalWidth;
+      canvas.height = tempImg.naturalHeight;
+      ctx.drawImage(tempImg, 0, 0);
+
+      const newURL = canvas.toDataURL(`image/${outputFormat}`);
+
+      img.src = newURL;
+      currentImageURL = newURL;
+      shareImageURL = newURL;
+      currentImageName = `decrypted_image.${format}`;
+
+      const decDL = document.getElementById('downloadDecImg');
+      decDL.href = newURL;
+      decDL.download = currentImageName;
+
+      hideLoader();
+      showToast("✔ Conversion Successful!");
+    };
+  }, 150); // ⏳ Wait, even for tiny images
+}
+
+
+
+function openConfirmModal() {
+  document.getElementById("confirmModal").classList.add("show");
+}
+
+function closeConfirmModal() {
+  document.getElementById("confirmModal").classList.remove("show");
+}
+
+function openFormatModal() {
+  document.getElementById("fileName").innerText = currentImageName;
+  document.getElementById("formatModal").classList.add("show");
+}
+
+function closeFormatModal() {
+  document.getElementById("formatModal").classList.remove("show");
+}
+
+
+function confirmYes() {
+  closeConfirmModal(); // Close confirm first
+  setTimeout(() => openFormatModal(), 200); // Smooth transition
+}
+
+function showToast(msg) {
+  let toast = document.createElement("div");
+  toast.id = "tempToast";
+  toast.innerHTML = msg;
+  
+  toast.style = `
+    position: fixed;
+    top: 20px; right: 20px;
+    background: rgba(0,255,213,0.18);
+    border: 2px solid #00ffd5;
+    padding: 12px 20px;
+    border-radius: 10px;
+    color: #00ffd5;
+    font-weight: bold;
+    z-index: 100000;
+    text-shadow: 0 0 10px #00ffd5;
+    box-shadow: 0 0 18px rgba(0,255,213,0.5);
+    backdrop-filter: blur(10px);
+    opacity: 0;
+    transition: opacity .3s, transform .3s;
+    transform: translateY(-15px);
+  `;
+
+  document.body.appendChild(toast);
+  setTimeout(() => {
+    toast.style.opacity = "1";
+    toast.style.transform = "translateY(0)";
+  }, 10);
+
+  setTimeout(() => {
+    toast.style.opacity = "0";
+    setTimeout(() => toast.remove(), 500);
+  }, 2000);
+}
+
+function forceEncryptedDownload() {
+  showLoader("Preparing download...");
+
+  fetch(shareImageURL)  
+    .then(res => res.blob())
+    .then(blob => {
+      hideLoader();
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "encrypted_image.png";  // Force download name
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url); // Cleanup
+    })
+    .catch(() => {
+      hideLoader();
+      alert("⚠ Unable to download image securely!");
+    });
+}
+
   </script>
 </body>
 </html>

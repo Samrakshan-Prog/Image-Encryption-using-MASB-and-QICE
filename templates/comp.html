@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Image Comparison Tool</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  font-style: italic;
+}
+
+:root {
+  --bg-dark: #121212;
+  --bg-light: #f5f5f5;
+  --text-dark: #e0e0e0;
+  --text-light: #222;
+  --primary: #00ffd5;
+  --success: #00c853;
+}
+
+body.dark {
+  background: #000;
+  color: #00ffd5;
+}
+
+/******** TITLE NEON ********/
+.titlee {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 18px 28px;
+  background: rgba(255,255,255,0.05);
+  border-bottom: 2px solid var(--primary);
+  box-shadow: 0 8px 25px rgba(0,255,213,0.25);
+}
+.titlee h1 {
+  font-size: 2.2rem;
+  color: var(--primary);
+  text-shadow: 0 0 12px var(--primary);
+}
+
+/******** GLASS BOX ********/
+.glass-box {
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(14px);
+  padding: 40px 45px;
+  border-radius: 22px;
+  width: 80%;
+  max-width: 450px;
+  margin: auto;
+  box-shadow: 0 0 25px rgba(0,255,213,0.3);
+  text-align: center;
+  margin-top: 70px;
+}
+
+.glass-box h2 {
+  margin-bottom: 25px;
+  color: var(--primary);
+  text-shadow: 0 0 10px var(--primary);
+}
+
+/* File Input */
+.file-input {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(0,255,213,0.5);
+  padding: 10px;
+  border-radius: 8px;
+  width: 100%;
+  margin-bottom: 18px;
+  cursor: pointer;
+  color: white;
+}
+
+.file-input::file-selector-button {
+  background: var(--primary);
+  color: black;
+  border-radius: 6px;
+  padding: 8px 14px;
+}
+
+.file-input::file-selector-button:hover {
+  background: #00c4aa;
+}
+
+/******** Buttons ********/
+.btn {
+  width: 100%;
+  margin-top: 15px;
+  padding: 14px;
+  font-weight: bold;
+  font-size: 18px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  background: var(--primary);
+  color: black;
+  box-shadow: 0 0 15px var(--primary);
+  transition: 0.3s ease-in-out;
+}
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 25px var(--primary);
+}
+ .back-btn {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 12px 20px;
+    background: #00ffd5;
+    color: black;
+    border-radius: 6px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: .3s;
+    
+  }
+
+  .back-btn:hover {
+    background: #00e0be;
+    box-shadow: 0 0 16px #00ffd5;
+  }
+
+</style>
+</head>
+
+<body class="dark">
+
+<div class="titlee">
+    <h1>IMAGE DIFFERENCE ANALYZER</h1>
+</div>
+
+<main>
+  <div class="glass-box">
+    <h2>Upload Two Images</h2>
+
+    <form action="/compare" method="POST" enctype="multipart/form-data">
+      <input type="file" name="image1" class="file-input" required>
+      <input type="file" name="image2" class="file-input" required>
+      <button type="submit" class="btn">Compare Now ⚡</button>
+    </form>
+  </div>
+  <center><a href="{{ url_for('index') }}" class="back-btn">⬅ Back to Home</a></center>
+</main>
+
+</body>
+</html>

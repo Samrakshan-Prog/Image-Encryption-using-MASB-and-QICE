@@ -4,6 +4,8 @@ import os
 import json
 import sys  
 from PIL import Image
+from Crypto.Cipher import AES
+import base64
 
 def convert_jpg_to_png(image_path):
     name, ext = os.path.splitext(image_path)
@@ -46,7 +48,7 @@ def process_image(image_path, encrypted_output_path, key_path, is_gray=False):
         quantum_key = generate_qice_key(shape, seed + 123)
         encrypted = apply_qice_modulation(shuffled, quantum_key)
         encrypted_bgr = cv2.cvtColor(encrypted, cv2.COLOR_GRAY2BGR)
-        cv2.imwrite(encrypted_output_path, encrypted_bgr)
+        cv2.imwrite(encrypted_output_path, encrypted_bgr, [cv2.IMWRITE_PNG_COMPRESSION, 1])
     else:
         b, g, r = cv2.split(img)
         shape = b.shape
@@ -61,8 +63,9 @@ def process_image(image_path, encrypted_output_path, key_path, is_gray=False):
             encrypted_channels.append(encrypted)
 
         encrypted_img = cv2.merge(encrypted_channels)
-        cv2.imwrite(encrypted_output_path, encrypted_img)
+        cv2.imwrite(encrypted_output_path, encrypted_img, [cv2.IMWRITE_PNG_COMPRESSION, 9])
 
+    
     key_data = {
         "shuffle_key": shuffle_key,
         "quantum_key": quantum_key.tolist(),
@@ -71,17 +74,25 @@ def process_image(image_path, encrypted_output_path, key_path, is_gray=False):
         "ext": ext
     }
 
+    AES_KEY = b'1234567890abcdef' 
+    json_bytes = json.dumps(key_data).encode()
+    cipher = AES.new(AES_KEY, AES.MODE_ECB)
+    pad_len = 16 - len(json_bytes) % 16
+    padded = json_bytes + bytes([pad_len]*pad_len)
+    encrypted_key = cipher.encrypt(padded)
+
     with open(key_path, 'w') as f:
-        json.dump(key_data, f)
+        f.write(base64.b64encode(encrypted_key).decode())
+    print(f"🔐 Key saved to {key_path}")
 
 if __name__ == "__main__":
     image_path = sys.argv[1]
-    converted_path = convert_jpg_to_png(image_path)  # auto conversion if needed
+    converted_path = convert_jpg_to_png(image_path)  
     name, ext = os.path.splitext(os.path.basename(converted_path))
     ext = ext.lower()
+    os.makedirs("output", exist_ok=True)
     output_path = f"output/encrypted_{name}{ext}"
     key_path = f"output/key_{name}.json"
-    os.makedirs("output", exist_ok=True)
 
     process_image(
         converted_path,
@@ -89,3 +100,4 @@ if __name__ == "__main__":
         key_path,
         is_gray=name.lower().startswith("gray_")
     )
+    print(f"✅ Encrypted image saved to {output_path}")

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>How to Use | Image Encryptor</title>
+
+<style>
+/* 🌌 Global Style Match */
+body {
+  margin:0;
+  padding:0;
+  font-family: 'Segoe UI', sans-serif;
+  background:black;
+  overflow-x:hidden;
+  color:white;
+}
+.bg-video {
+  position:fixed;
+  top:0; left:0;
+  width:100vw; height:100vh;
+  object-fit:cover;
+  filter:brightness(0.45);
+  z-index:-1;
+}
+
+/* 🔸 Title Glow Block */
+.page-title {
+  width:fit-content;
+  margin:120px auto 20px;
+  padding:14px 22px;
+  font-size:2.2rem;
+  font-weight:bold;
+  color:#00ffd5;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  text-shadow:0 0 20px #00ffd5;
+  background:rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,0.4);
+  border-radius:10px;
+  backdrop-filter:blur(6px);
+}
+
+/* 🧊 Glass Step Cards */
+.step-box {
+  width:75%;
+  margin:16px auto;
+  background:rgba(255,255,255,0.12);
+  border:1px solid rgba(255,255,255,0.35);
+  padding:18px 24px;
+  border-radius:14px;
+  font-size:1.05rem;
+  backdrop-filter:blur(10px);
+  transition:transform .25s ease, box-shadow .25s ease;
+  text-shadow:0 0 10px rgba(0,255,213,0.5);
+}
+.step-box:hover {
+  transform:scale(1.03);
+  box-shadow:0 0 15px #00ffd5;
+}
+
+/* ⚠ Key Safety */
+.alert {
+  width:75%;
+  margin:25px auto;
+  padding:18px 26px;
+  background:rgba(255, 204, 0, 0.12);
+  border:1px solid rgba(255,204,0,0.6);
+  border-radius:14px;
+  font-weight:bold;
+  color:#ffe47c;
+  text-shadow:0 0 12px #ffbf00;
+}
+
+/* 🔙 Back button */
+.back {
+  display:block;
+  width:fit-content;
+  margin:40px auto;
+  padding:12px 30px;
+  background:#00ffd5;
+  color:black;
+  border-radius:8px;
+  font-size:1rem;
+  font-weight:bold;
+  text-decoration:none;
+  transition:0.3s;
+}
+.back:hover {
+  background:#00a18e;
+  color:white;
+  transform:translateY(-4px);
+}
+</style>
+</head>
+
+<body>
+
+<video autoplay muted loop playsinline class="bg-video">
+  <source src="/static/vidd.mp4" type="video/mp4">
+</video>
+
+<h1 class="page-title">How to Use</h1>
+
+<div class="step-box">1️⃣ Click <b>Continue</b> on the welcome screen.</div>
+<div class="step-box">2️⃣ Choose <b>Encrypt</b> or <b>Decrypt</b> on the next screen.</div>
+<div class="step-box">3️⃣ Upload or drag & drop your image file.</div>
+<div class="step-box">4️⃣ For decryption, upload both <b>encrypted image</b> and <b>key file</b>.</div>
+<div class="step-box">5️⃣ Click <b>Start Encryption</b> or <b>Start Decryption</b>.</div>
+<div class="step-box">6️⃣ Wait for the glowing loader to complete.</div>
+<div class="step-box">7️⃣ Download your encrypted/decrypted image instantly.</div>
+
+<div class="alert">🔑 Always store the key file safely — without it, decryption is impossible ❗</div>
+
+<a href="{{ url_for('index') }}" class="back">⬅ Back to Home</a>
+
+</body>
+</html>
