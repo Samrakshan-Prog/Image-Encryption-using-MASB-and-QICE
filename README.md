@@ -143,9 +143,9 @@ This generates plots saved to `static/plots/` showing pixel correlation and encr
 **Sri Samrakshan Parthiban**  
 B.Sc Information Technology
 
-[![LinkedIn](www.linkedin.com/in/srisamrakshan)
+🔗 LinkedIn: [linkedin.com/in/srisamrakshan](https://www.linkedin.com/in/srisamrakshan)
 
-> 💡 *Replace the LinkedIn URL above with your actual profile link.*
+
 
 ---
 
