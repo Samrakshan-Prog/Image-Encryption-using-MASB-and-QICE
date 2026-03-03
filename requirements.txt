@@ -1,0 +1,8 @@
+Flask
+Pillow
+numpy
+cloudinary
+matplotlib
+seaborn
+requests
+python-dotenv
